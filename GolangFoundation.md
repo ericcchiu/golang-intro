@@ -1,9 +1,9 @@
 # Go Foundations
 
 ## Content 
-1. [Introduction](##Introduction)
-2. [Setting Up Golang](##Setting-Up-Golang)
-3. [Types](##Types)
+1. [Introduction](##1.-Introduction)
+2. [Setting Up Golang](##2.-Setting-Up-Golang)
+3. [Types](##3.-Types)
 
 ***
 
@@ -39,7 +39,7 @@ Go(Golang) was created by Google in November of 2009 originally to be an amazing
 
 ***
 
-## 2. Setting Up Golang
+## __2. Setting Up Golang__
 ### Learning Objectives:
 
 * Installation of Golang
@@ -93,7 +93,8 @@ Add /user/go/bin to the PATH environment variable. You can do this by adding thi
 ```linux
 export PATH=$PATH:/user/local/go/bin
 ```
-NOTE: changes made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source $HOME/.profile.
+NOTE: chang
+1. [Introduction](##Introductiones made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source $HOME/.profile.
 
 ***
 
