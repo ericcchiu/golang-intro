@@ -1,6 +1,40 @@
+<!-- omit in toc -->
 # Go Foundations
 
-## Content
+- [__1. Introduction__](#1-introduction)
+  - [Use Cases:](#use-cases)
+  - [Why Go?](#why-go)
+- [__2. Setting Up Golang__](#2-setting-up-golang)
+  - [Learning Objectives:](#learning-objectives)
+  - [__Installation__](#installation)
+    - [Windows Installation](#windows-installation)
+    - [Linux Installation](#linux-installation)
+      - [Step One: Install Go Language](#step-one-install-go-language)
+      - [Step 2: Set up Go environment](#step-2-set-up-go-environment)
+- [__3. Types__](#3-types)
+  - [__Concepts__](#concepts)
+  - [__Intro__](#intro)
+  - [__Numbers__](#numbers)
+    - [Integers](#integers)
+    - [Float](#float)
+    - [Using Number Literals](#using-number-literals)
+    - [Rune and Byte](#rune-and-byte)
+  - [__Strings__](#strings)
+  - [__Boolean__](#boolean)
+    - [Operators](#operators)
+- [4. __Go Variables__](#4-go-variables)
+  - [Learning Objective:](#learning-objective)
+  - [Variable Concepts](#variable-concepts)
+  - [Skills](#skills)
+- [__Variables__](#variables)
+  - [__Declaration__](#declaration)
+  - [__Short Declaration__](#short-declaration)
+  - [__Multiple Variable Values and Declarations__](#multiple-variable-values-and-declarations)
+  - [__Constants__](#constants)
+  - [**Lab 1 - Declare and use Variables**](#lab-1---declare-and-use-variables)
+  - [__Scope__](#scope)
+
+<!-- ## Content
 
 1. [Introduction](##1.-Introduction)
 2. [Setting Up Golang](##2.-Setting-Up-Golang)
@@ -33,7 +67,7 @@
 
     4.5. [Scope](###Scope)
 
-    4.6. [Type Definitions](###Type-Definitions)
+    4.6. [Type Definitions](###Type-Definitions) -->
 
 ***
 
@@ -97,7 +131,7 @@ go version go1.14.4 windows/amd64
 
 #### Linux Installation
 
-#### Step One: Install Go Language
+##### Step One: Install Go Language
 
 Upagrade to apply the latest security updates on Ubuntu.
 
@@ -124,7 +158,7 @@ sudo tar -xvf go1.14.2.linux-amd64.tar.gz
 sudo mv go /user/local
 ```
 
-#### Step 2: Set up Go environment
+##### Step 2: Set up Go environment
 
 Set up the Go language environment variable so that Go can be used outside the `$GOPATH`.
 
@@ -140,14 +174,14 @@ export PATH=$PATH:/user/local/go/bin
 
 ## __3. Types__
 
-### Concepts
+### __Concepts__
 
 * What is a built-in type
 * The number types
 * The string type
 * Boolean types
 
-### Intro
+### __Intro__
 
 Types are how we identify a data type in Go. There are many different types in Go, such as `struct` and `interface`.
 
@@ -186,13 +220,13 @@ A literal is a value written as is, and not assigned to any variables.
 
 It is very common to use the following operators with numbers when doing various calculations.
 
-|Operator    | Description        |
-|:----------:|:-------------------|
-| +          | addition           |
-| -          | subtraction        |
-| *          | multiplication     |
-| /          | division           |
-| %          | remainder/Modulus  |
+| Operator | Description       |
+| :------: | :---------------- |
+|    +     | addition          |
+|    -     | subtraction       |
+|    *     | multiplication    |
+|    /     | division          |
+|    %     | remainder/Modulus |
 
 Example of using number literals and operators
 
@@ -322,14 +356,14 @@ The `bool` type can define a variable that represents either of these states.
 
 There are five operators used with boolean values in Go.
 
-|Operator|Description     |
-|:------:|:---------------|
-|`&&`    |And             |
-|`||`    |Or              |
-|`!`     |Not             |
-|`==`    |Equals          |
-|`==`    |Equals          |
-|`!=`    |Not Equals      |
+| Operator | Description |
+| :------: | :---------- |
+|   `&&`   | And         |
+|   `||`   | Or          |
+|   `!`    | Not         |
+|   `==`   | Equals      |
+|   `==`   | Equals      |
+|   `!=`   | Not Equals  |
 
 ```Golang
 package main
