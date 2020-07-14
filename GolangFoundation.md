@@ -3,6 +3,10 @@
 ## Content 
 1. [Introduction](##1.-Introduction)
 2. [Setting Up Golang](##2.-Setting-Up-Golang)
+
+    2.1. [Numbers](###Numbers)
+    2.2. [Strings](###Strings)
+
 3. [Types](##3.-Types)
 
 ***
@@ -93,7 +97,7 @@ Add /user/go/bin to the PATH environment variable. You can do this by adding thi
 ```linux
 export PATH=$PATH:/user/local/go/bin
 ```
-NOTE: chang
+
 1. [Introduction](##Introductiones made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source $HOME/.profile.
 
 ***
@@ -108,9 +112,7 @@ NOTE: chang
 ### Intro
 Types are how we identify a data type in Go. There are many different types in Go, such as `struct` and `interface`. 
 
-***
-
-#### Numbers
+### __Numbers__
 In Go there are two major number types: **Integers** and **Floating point** numbers.
 
 #### Integers
@@ -171,7 +173,9 @@ The `rune` and `byte` types are also technically numbers as well and are alias t
 
 Similarly `byte` is an alias for `unint8`. Byte is most commonly seen in when working with strings, which in Golang, are an array of bytes. 
 
-#### __Strings__
+***
+
+### __Strings__
 
 String types are used to represent text. They are made up of a series of characters. More specifically, strings are made up of `bytes`, where there is typically one byte per character. 
 
@@ -197,4 +201,144 @@ You often need to combine one more or more strings at some point. The quickest, 
 **Example:** ``` "Go on " + with your bad self." ```
 
 There are other methods of concating strings that may be more efficient when working with large strings, or gorups of strings; however, using the `+` is perfectly fine in most cases. The other mehods will not be covered in this course, but if you are interested in some of the other methods [this is a good blog presenting](https://www.hermanschaaf.com/efficient-string-concatenation-in-go/) some benchmarking and techniques. 
+
+Alternate concatenation methods:
+* Method 1: Naive Appending with ``+=``
+
+    This is the most obvious approach to the problem. Use the concatenate operator (+=) to append each segment to the string. The thing to know about this is that strings are immutable in Go - each time a string is assigned to a variable a new address is assigned in memory to represent the new value. This is different from languages like C++ and BASIC, where a string variable can be modified in place. In Go, each time you append to the end of a string, it must create a new string and copy the contents of both the existing string and the appended string into it. As the strings you are manipulating become large this process becomes increasingly slow. In fact, this method of naive appending is O(N^2).
+
+* Method 2: strings.Join
+
+    The Go strings standard library package provides a Join function that takes a slice of strings and concatenates them. In our case, this requires first building a slice of strings and then calling the function on the slice. Building a slice takes time if you don’t already have one, and we therefore count this as part of the time taken to perform the concatenation in our benchmarks. The final concatenation will be O(N), but building the slice is O(N) (average) and uses O(N) memory.
+
+
+
+    Here is an example of using ``strings.Join``:
+
+    ````Golang
+    package main
+
+    import (
+	    "fmt"
+	    "strings"
+    )
+
+    func main() {
+	    s := []string{}
+	    for i := 0; i < 1000; i++ {
+		    s = append(s, "a")
+	    }
+	    fmt.Println(strings.Join(s, ""))
+    }
+    ````
+
+* Method 3: bytes.Buffer
+    The last method we’ll be evaluating is using the Buffer type from the bytes package. bytes.Buffer implements io.Writer, and can concatenate strings in O(N) time without requiring us to build a new slice.
+
+    Here is an example of using ``bytes.Buffer``:
+
+    ```Golang
+    package main
+
+    import (
+	    "bytes"
+	    "fmt"
+    )
+
+    func main() {
+	    var buffer bytes.Buffer
+
+	    for i := 0; i < 1000; i++ {
+		    buffer.WriteString("a")
+	}
+
+	fmt.Println(buffer.String())
+    }
+    ```
+* __Working with String Literals__
+
+```Golang
+package main 
+imprt "fmt" 
+func main() {
+    fmt.Println("Part one " + "joined with " + "Part 2")
+    fmt.Println("I'm a string Literal!\n", `So am I!`)
+    fmt.Println("Printing a JSON String: %s \n", `{"color": "red"}`)
+}
+```
+
+***
+
+### __Boolean__
+
+Boolean values represented by either `true` or `false`.
+
+The `bool` type can define a variable that represents either of these states. 
+
+#### Operators
+
+There are five operators used with boolean values in Go. 
+
+|Operator|Description     |
+|:------:|:---------------|
+|`&&`    |And             |
+|`||`    |Or              |
+|`!`     |Not             |
+|`==`    |Equals          |
+|`==`    |Equals          |
+|`!=`    |Not Equals      |
+
+```Golang
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("this" == "that") // false
+    fmt.Println( 1 ++ 1) // true
+    fmt.Println("this" == "this") // true
+    fmt.Println("this" != "that") // true
+    fmt.Println("this" == "this" && 1 == 1) // true
+    fmt.Println("this" == "this" && 1 == 2) // false
+    fmt.Println("this" == "this" || 1 == 2) // false
+}
+```
+
+***
+
+## 4. __Go Variables__
+
+### Learning Objectives:
+
+### Concepts
+* Variable Declarations
+* Short Variable Declarations
+* Constants
+* Multiple Variables
+* Scope
+* Type Definitions
+
+### Skills
+* Defining variables for given types
+* Using variables in place of literals
+* Be able to cleanly define multiple variables
+* Get a basic understanding of scope in Go
+
+### __Variables__
+
+*__Basics__*
+
+Variables in Go, like other languages, store data to be used throughout your application. THere are a few basic rules that must be followed when using a variable in Go.
+
+1. The type must be declared for any given name.
+2. Once a type is declared, that name cannot be converted to another type. 
+3. Any function or  below scoped declared variable must be used or you cannot compile. 
+4. Names can contain:
+    * letters(any case)
+    * numbers(other than the first character)
+    * underscore `_` character
+
+**Syntax of a variable:** `[var | constant] <name> <type>`
+
+
 
