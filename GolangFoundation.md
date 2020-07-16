@@ -33,6 +33,7 @@
   - [__Constants__](#constants)
   - [**Lab 1 - Declare and use Variables**](#lab-1---declare-and-use-variables)
   - [__Scope__](#scope)
+  - [__Type Definitions__](#type-definitions)
 
 <!-- ## Content
 
@@ -632,3 +633,37 @@ func main() { // Start of the function block
 ```
 
 The `x` variable is only accessible to "things" within the `{}` of the main function. However, the main function can access the package block variable `packageVariable` just fine.
+
+***
+
+**NOTE:**
+
+Other scope access includes loops, if statements, etc.
+
+***
+
+### __Type Definitions__
+
+In Go, custom types can be defined using the `type` keyword. The type will maintain the underlying type as its type and operations, but bind to the identifier. 
+
+```Golang
+// Define a solo new type.
+type NewTypeName SourceType
+
+// Define multiple new twpes together.
+type (
+    NewTypeName1 SourceType1
+    NewTypeName2 SourceType2
+)
+```
+
+```Golang
+type TimeZone int
+var x TImezone
+x = 5
+```
+
+* A new defined type and its respective source type in type definitions are two distinct types. 
+* Two different defined types are always two distinct types.
+* The new defined type and the source type will share the same underlying type (see below for what are underlying types), and their values can be converted to each other. 
+* Types can be defined within function bodies.
