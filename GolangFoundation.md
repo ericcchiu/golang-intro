@@ -1,123 +1,89 @@
 <!-- omit in toc -->
+
 # Go Foundations
 
-- [__1. Introduction__](#1-introduction)
+- [**1. Introduction**](#1-introduction)
   - [Use Cases:](#use-cases)
   - [Why Go?](#why-go)
-- [__2. Setting Up Golang__](#2-setting-up-golang)
+- [**2. Setting Up Golang**](#2-setting-up-golang)
   - [Learning Objectives:](#learning-objectives)
-  - [__Installation__](#installation)
+  - [**Installation**](#installation)
     - [Windows Installation](#windows-installation)
     - [Linux Installation](#linux-installation)
       - [Step One: Install Go Language](#step-one-install-go-language)
       - [Step 2: Set up Go environment](#step-2-set-up-go-environment)
-- [__3. Types__](#3-types)
-  - [__Concepts__](#concepts)
-  - [__Intro__](#intro)
-  - [__Numbers__](#numbers)
+- [**3. Types**](#3-types)
+  - [**Concepts**](#concepts)
+  - [**Intro**](#intro)
+  - [**Numbers**](#numbers)
     - [Integers](#integers)
     - [Float](#float)
     - [Using Number Literals](#using-number-literals)
     - [Rune and Byte](#rune-and-byte)
-  - [__Strings__](#strings)
-  - [__Boolean__](#boolean)
+  - [**Strings**](#strings)
+  - [**Boolean**](#boolean)
     - [Operators](#operators)
-- [4. __Go Variables__](#4-go-variables)
+- [4. **Go Variables**](#4-go-variables)
   - [Learning Objective:](#learning-objective)
   - [Variable Concepts](#variable-concepts)
   - [Skills](#skills)
-- [__Variables__](#variables)
-  - [__Declaration__](#declaration)
-  - [__Short Declaration__](#short-declaration)
-  - [__Multiple Variable Values and Declarations__](#multiple-variable-values-and-declarations)
-  - [__Constants__](#constants)
+- [**Variables**](#variables)
+  - [**Declaration**](#declaration)
+  - [**Short Declaration**](#short-declaration)
+  - [**Multiple Variable Values and Declarations**](#multiple-variable-values-and-declarations)
+  - [**Constants**](#constants)
   - [**Lab 1 - Declare and use Variables**](#lab-1---declare-and-use-variables)
-  - [__Scope__](#scope)
-  - [__Type Definitions__](#type-definitions)
+  - [**Scope**](#scope)
+  - [**Type Definitions**](#type-definitions)
 
-<!-- ## Content
+---
 
-1. [Introduction](##1.-Introduction)
-2. [Setting Up Golang](##2.-Setting-Up-Golang)
-
-    2.1. [Installation](###Installation)
-
-    2.1.1 [Windows Installation](####Windows-Installation)
-
-    2.1.2 [Linux Installation](####Linux-Installation)
-
-    2.2. [Installation](###Installation)
-
-3. [Types](##3.-Types)
-
-    3.1. [Numbers](###Numbers)
-
-    3.2. [Strings](###Strings)
-
-    3.3. [Boolean](###Boolean)
-
-4. [Go Variables](##4.-Go-Variables)
-
-    4.1. [Variable Declarations](###Declaration)
-
-    4.2. [Short Variable Declarations](###Short-Declaration)
-
-    4.3. [Constants](###Constants)
-
-    4.4. [Multiple Variables](###Multiple-Variable-Values-and-Declarations)
-
-    4.5. [Scope](###Scope)
-
-    4.6. [Type Definitions](###Type-Definitions) -->
-
-***
-
-## __1. Introduction__
+## **1. Introduction**
 
 Go(Golang) was created by Google in November of 2009 originally to be an amazing procedural language for scalable cloud software. It was built to be simple and fast.
 
 ### Use Cases:
 
-* System Admin scripts
-* Web app that serves HTML pages
-* File server
-* Scripts that deploy code to environments
+- System Admin scripts
+- Web app that serves HTML pages
+- File server
+- Scripts that deploy code to environments
 
 ### Why Go?
 
-* It's simple. The overarching reason behind every feature is readability.
+- It's simple. The overarching reason behind every feature is readability.
 
-* It compiles down to binaries so deploying is simple.
+- It compiles down to binaries so deploying is simple.
 
-* It comes with only the basic structures and methods. Add packages only as needed. This allows the source code to remain light weight.
+- It comes with only the basic structures and methods. Add packages only as needed. This allows the source code to remain light weight.
 
-* It comes with an auto formatter, so spacing is not an argument on teams.
-* Basic testing is built-in
+- It comes with an auto formatter, so spacing is not an argument on teams.
+- Basic testing is built-in
 
-* Concurrency is made easy for the developer. No thread management needed. The design of communication eliminates race conditions.
+- Concurrency is made easy for the developer. No thread management needed. The design of communication eliminates race conditions.
 
-* It comes with all the things you need to make a server.
+- It comes with all the things you need to make a server.
 
-* Version 1 is completely backwards compativle, as promised.
+- Version 1 is completely backwards compativle, as promised.
 
-* Interfaces allow for abstraction, easy testability (through Dependency Injection), and the Adapter Pattern.
+- Interfaces allow for abstraction, easy testability (through Dependency Injection), and the Adapter Pattern.
 
-* Consisten documentation found at [golang.org/doc](https://golang.org/doc/)
+- Consisten documentation found at [golang.org/doc](https://golang.org/doc/)
 
-***
+---
 
-## __2. Setting Up Golang__
+## **2. Setting Up Golang**
 
 ### Learning Objectives:
 
-* Installation of Golang
-* Steps to set up Golang
-* Go Modes: Go Modules and GOPATH
-* Parts of a Go file
-* Package, Import and Declaration sections of a Go file
-* Building and running a Go file
+- Installation of Golang
+- Steps to set up Golang
+- Go Modes: Go Modules and GOPATH
+- Parts of a Go file
+- Package, Import and Declaration sections of a Go file
+- Building and running a Go file
 
-### __Installation__
+### **Installation**
 
 #### Windows Installation
 
@@ -163,30 +129,30 @@ sudo mv go /user/local
 
 Set up the Go language environment variable so that Go can be used outside the `$GOPATH`.
 
-Add /user/go/bin to the PATH environment variable. You can do this by adding this line to your /etc/profile(for a system-wide installation) or $HOME/.profile:
+Add /user/go/bin to the PATH environment variable. You can do this by adding this line to your /etc/profile(for a system-wide installation) or \$HOME/.profile:
 
 ```linux
 export PATH=$PATH:/user/local/go/bin
 ```
 
-1. [Introduction](##Introductiones made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source $HOME/.profile.
+1. [Introduction](##Introductiones made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source \$HOME/.profile.
 
-***
+---
 
-## __3. Types__
+## **3. Types**
 
-### __Concepts__
+### **Concepts**
 
-* What is a built-in type
-* The number types
-* The string type
-* Boolean types
+- What is a built-in type
+- The number types
+- The string type
+- Boolean types
 
-### __Intro__
+### **Intro**
 
 Types are how we identify a data type in Go. There are many different types in Go, such as `struct` and `interface`.
 
-### __Numbers__
+### **Numbers**
 
 In Go there are two major number types: **Integers** and **Floating point** numbers.
 
@@ -194,20 +160,20 @@ In Go there are two major number types: **Integers** and **Floating point** numb
 
 Integers are non-decimal based numbers that can be represented using one of the following types:
 
-* The `int` types can represent any positive or negative non-decimal number
-* The `uint` types can only be positive non-decimal numbers
+- The `int` types can represent any positive or negative non-decimal number
+- The `uint` types can only be positive non-decimal numbers
 
-*Sized Types:*
+_Sized Types:_
 
-* `int8`, `int16`, `int32`, and `int64`
-* `uint8`, `uint16`, `uint32`, and `uint64`
+- `int8`, `int16`, `int32`, and `int64`
+- `uint8`, `uint16`, `uint32`, and `uint64`
 
 The 8, 16, 32, and 64 by each type represents the maximum size of the type in bits. `int8` has a max size of 8 bits and `uint64` has a max size of 64 bits.
 
 Examples:
 
-* Given a 64 bit processors `int` will default to `int64`
-* Given a 32 bit processors `int` will default to `int32`
+- Given a 64 bit processors `int` will default to `int64`
+- Given a 32 bit processors `int` will default to `int32`
 
 #### Float
 
@@ -225,7 +191,7 @@ It is very common to use the following operators with numbers when doing various
 | :------: | :---------------- |
 |    +     | addition          |
 |    -     | subtraction       |
-|    *     | multiplication    |
+|    \*    | multiplication    |
 |    /     | division          |
 |    %     | remainder/Modulus |
 
@@ -249,105 +215,105 @@ The `rune` and `byte` types are also technically numbers as well and are alias t
 
 Similarly `byte` is an alias for `unint8`. Byte is most commonly seen in when working with strings, which in Golang, are an array of bytes.
 
-***
+---
 
-### __Strings__
+### **Strings**
 
 String types are used to represent text. They are made up of a series of characters. More specifically, strings are made up of `bytes`, where there is typically one byte per character.
 
-*__Creating Byte Literals__*
+_**Creating Byte Literals**_
 
 There are two ways to create string literals. A string literal can be created by surrounding the characters with double quites `"` or "back ticks" `.
 
-*__Double Quotes__*
+_**Double Quotes**_
 
-* Example: `"Get Going"`
-* Will translate escape escape characters. For eample `\n` is translated to a newline.
+- Example: `"Get Going"`
+- Will translate escape escape characters. For eample `\n` is translated to a newline.
 
-*__Back Ticks__*
+_**Back Ticks**_
 
-* **Example:** ``Get Going``
-* Will not translate escape characters.
-* Handy when creating literals that contain double quotes, such as when working with JSON strings.
+- **Example:** `Get Going`
+- Will not translate escape characters.
+- Handy when creating literals that contain double quotes, such as when working with JSON strings.
 
-*__Concatenated Strings__*
+_**Concatenated Strings**_
 
 You often need to combine one more or more strings at some point. The quickest, most common way to do this is to use the `+` operator to combine the two strings.
 
-**Example:** ``` "Go on " + "with your bad self." ```
+**Example:** `"Go on " + "with your bad self."`
 
 There are other methods of concating strings that may be more efficient when working with large strings, or gorups of strings; however, using the `+` is perfectly fine in most cases. The other mehods will not be covered in this course, but if you are interested in some of the other methods [this is a good blog presenting](https://www.hermanschaaf.com/efficient-string-concatenation-in-go/) some benchmarking and techniques.
 
 Alternate concatenation methods:
 
-* Method 1: Naive Appending with ``+=``
+- Method 1: Naive Appending with `+=`
 
-    This is the most obvious approach to the problem. Use the concatenate operator (+=) to append each segment to the string. The thing to know about this is that strings are immutable in Go - each time a string is assigned to a variable a new address is assigned in memory to represent the new value. This is different from languages like C++ and BASIC, where a string variable can be modified in place. In Go, each time you append to the end of a string, it must create a new string and copy the contents of both the existing string and the appended string into it. As the strings you are manipulating become large this process becomes increasingly slow. In fact, this method of naive appending is O(N^2).
+  This is the most obvious approach to the problem. Use the concatenate operator (+=) to append each segment to the string. The thing to know about this is that strings are immutable in Go - each time a string is assigned to a variable a new address is assigned in memory to represent the new value. This is different from languages like C++ and BASIC, where a string variable can be modified in place. In Go, each time you append to the end of a string, it must create a new string and copy the contents of both the existing string and the appended string into it. As the strings you are manipulating become large this process becomes increasingly slow. In fact, this method of naive appending is O(N^2).
 
-* Method 2: strings.Join
+- Method 2: strings.Join
 
-    The Go strings standard library package provides a Join function that takes a slice of strings and concatenates them. In our case, this requires first building a slice of strings and then calling the function on the slice. Building a slice takes time if you don’t already have one, and we therefore count this as part of the time taken to perform the concatenation in our benchmarks. The final concatenation will be O(N), but building the slice is O(N) (average) and uses O(N) memory.
+  The Go strings standard library package provides a Join function that takes a slice of strings and concatenates them. In our case, this requires first building a slice of strings and then calling the function on the slice. Building a slice takes time if you don’t already have one, and we therefore count this as part of the time taken to perform the concatenation in our benchmarks. The final concatenation will be O(N), but building the slice is O(N) (average) and uses O(N) memory.
 
-    Here is an example of using ``strings.Join``:
+  Here is an example of using `strings.Join`:
 
-    ```Golang
-    package main
+  ```Golang
+  package main
 
-    import (
-        "fmt"
-        "strings"
-    )
+  import (
+      "fmt"
+      "strings"
+  )
 
-    func main() {
-        s := []string{}
-        for i := 0; i < 1000; i++ {
-            s = append(s, "a")
-        }
-        fmt.Println(strings.Join(s, ""))
-    }
-    ```
+  func main() {
+      s := []string{}
+      for i := 0; i < 1000; i++ {
+          s = append(s, "a")
+      }
+      fmt.Println(strings.Join(s, ""))
+  }
+  ```
 
-* Method 3: bytes.Buffer
+- Method 3: bytes.Buffer
 
-    The last method we’ll be evaluating is using the Buffer type from the bytes package. bytes.Buffer implements io.Writer, and can concatenate strings in O(N) time without requiring us to build a new slice.
+  The last method we’ll be evaluating is using the Buffer type from the bytes package. bytes.Buffer implements io.Writer, and can concatenate strings in O(N) time without requiring us to build a new slice.
 
-    Here is an example of using ``bytes.Buffer``:
+  Here is an example of using `bytes.Buffer`:
 
-    ```Golang
-    package main
+  ```Golang
+  package main
 
-    import (
-        "bytes"
-        "fmt"
-    )
+  import (
+      "bytes"
+      "fmt"
+  )
 
-    func main() {
-        var buffer bytes.Buffer
+  func main() {
+      var buffer bytes.Buffer
 
-        for i := 0; i < 1000; i++ {
-            buffer.WriteString("a")
-    }
+      for i := 0; i < 1000; i++ {
+          buffer.WriteString("a")
+  }
 
-    fmt.Println(buffer.String())
-    }
-    ```
+  fmt.Println(buffer.String())
+  }
+  ```
 
-* __Working with String Literals__
+- **Working with String Literals**
 
-    ```Golang
-    package main
-    imprt "fmt"
-    func main() {
-        fmt.Println("Part one " + "joined with " + "Part 2")
-        fmt.Println("I'm a string Literal!\n", `So am I!`)
-        fmt.Println("Printing a JSON String: %s \n", `{"color": "red"}`)
-    }
+  ```Golang
+  package main
+  imprt "fmt"
+  func main() {
+      fmt.Println("Part one " + "joined with " + "Part 2")
+      fmt.Println("I'm a string Literal!\n", `So am I!`)
+      fmt.Println("Printing a JSON String: %s \n", `{"color": "red"}`)
+  }
 
-    ```
+  ```
 
-***
+---
 
-### __Boolean__
+### **Boolean**
 
 Boolean values represented by either `true` or `false`.
 
@@ -382,45 +348,45 @@ func main() {
 }
 ```
 
-***
+---
 
-## 4. __Go Variables__
+## 4. **Go Variables**
 
 ### Learning Objective:
 
 ### Variable Concepts
 
-* Variable Declarations
-* Short Variable Declarations
-* Constants
-* Multiple Variables
-* Scope
-* Type Definitions
+- Variable Declarations
+- Short Variable Declarations
+- Constants
+- Multiple Variables
+- Scope
+- Type Definitions
 
 ### Skills
 
-* Defining variables for given types
-* Using variables in place of literals
-* Be able to cleanly define multiple variables
-* Get a basic understanding of scope in Go
+- Defining variables for given types
+- Using variables in place of literals
+- Be able to cleanly define multiple variables
+- Get a basic understanding of scope in Go
 
-## __Variables__
+## **Variables**
 
-*__Basics__*
+_**Basics**_
 
 Variables in Go, like other languages, store data to be used throughout your application. There are a few basic rules that must be followed when using a variable in Go.
 
 1. The type must be declared for any given name.
 2. Once a type is declared, that name cannot be converted to another type.
-3. Any function or  below scoped declared variable must be used or you cannot compile.
+3. Any function or below scoped declared variable must be used or you cannot compile.
 4. Names can contain:
-    * letters(any case)
-    * numbers(other than the first character)
-    * underscore `_` character
+   - letters(any case)
+   - numbers(other than the first character)
+   - underscore `_` character
 
 **Syntax of a variable:** `[var | constant] <name> <type>`
 
-### __Declaration__
+### **Declaration**
 
 Basic variable declarations consists of naming the variable and giving it a type.
 
@@ -453,14 +419,14 @@ or we can drop the type and **allow the assigned value to determine the type of 
 var thing = "Oh happy days"
 ```
 
-***
+---
 
 **NOTE:**
 
-* If the type is left off, then a value has to be assigned.
-* The type will then always be the type of the value of the supplied to the right of the `=`
+- If the type is left off, then a value has to be assigned.
+- The type will then always be the type of the value of the supplied to the right of the `=`
 
-***
+---
 
 Now let's apply this to the other basic types and use them:
 
@@ -487,7 +453,7 @@ func main() {
 }
 ```
 
-### __Short Declaration__
+### **Short Declaration**
 
 For the most part, in any programming language, less typing resulting in the same effect is a good thing. In Go, you have the ability to shorten the declaration of variables in a function level using the assignment operator `:=`.
 
@@ -495,8 +461,8 @@ For the most part, in any programming language, less typing resulting in the sam
 
 **Short variable rules:**
 
-* A value has to be assigned
-* The type will then always be the type of the value of the supplied to the right of the `:=`
+- A value has to be assigned
+- The type will then always be the type of the value of the supplied to the right of the `:=`
 
 Reusing the example above, we can assign and declare at the same time:
 
@@ -513,7 +479,7 @@ thing := "Not a new thing"
 
 it will result in a compile error: `no new variables on left side of :=`
 
-### __Multiple Variable Values and Declarations__
+### **Multiple Variable Values and Declarations**
 
 Go also supports declaring and assigning values to a variable on one line. Names get assigned types and values from left to righ on either side of the `=`.
 
@@ -544,15 +510,16 @@ func main () {
 4. 3 Function level variables, with 3 different types on the right.
 5. Demonstrate using the shorthand `:=` operator to assign values of various types.
 
-### __Constants__
+### **Constants**
 
-*__What is a constant?__*
+_**What is a constant?**_
 
-* Constants are variables that cannot have their value changed after declaration
-* Must be assigned a value when declared.
+- Constants are variables that cannot have their value changed after declaration
+- Must be assigned a value when declared.
 
 `const z = 2` Creates a constant name `z`. `z` will always have a value of 2.
-***
+
+---
 
 ### **Lab 1 - Declare and use Variables**
 
@@ -574,13 +541,13 @@ Try different variations of declaring the variables. Some ideas to try:
 2. Everything on one line
 3. Outside the main
 
-***
+---
 
-### __Scope__
+### **Scope**
 
 Scope defines where a variable is able to be accessed. In Go, a variable's scope is defined by the block where it is initially declared.
 
-*__Blocks__*
+_**Blocks**_
 
 In general, blocks are defined as code between curly braces `{ }`. There are some implicit blocks, such as at the package level block (aka package block) that are not as easy to visualize. We will cover the most common cases of blocks in this course.
 
@@ -600,7 +567,7 @@ func main() {
 2. Anonymous block that declares the variable `y`.
 3. Function block that attempts to print `y`.
 
-*__Package Block Scope__*
+_**Package Block Scope**_
 
 The package block is anything after the import statement. We will discuss packages later on, but it is good to know that a package block can span all `.go` files that package.
 
@@ -615,7 +582,7 @@ var packageVariable ="Hi"
 
 The `packageVariable` is declared in the package block, therefore it is able to be accessed everywhere in the package.
 
-*__Function Block Scope__*
+_**Function Block Scope**_
 
 ```Golang
 package main
@@ -634,17 +601,17 @@ func main() { // Start of the function block
 
 The `x` variable is only accessible to "things" within the `{}` of the main function. However, the main function can access the package block variable `packageVariable` just fine.
 
-***
+---
 
 **NOTE:**
 
 Other scope access includes loops, if statements, etc.
 
-***
+---
 
-### __Type Definitions__
+### **Type Definitions**
 
-In Go, custom types can be defined using the `type` keyword. The type will maintain the underlying type as its type and operations, but bind to the identifier. 
+In Go, custom types can be defined using the `type` keyword. The type will maintain the underlying type as its type and operations, but bind to the identifier.
 
 ```Golang
 // Define a solo new type.
@@ -663,7 +630,7 @@ var x TImezone
 x = 5
 ```
 
-* A new defined type and its respective source type in type definitions are two distinct types. 
-* Two different defined types are always two distinct types.
-* The new defined type and the source type will share the same underlying type (see below for what are underlying types), and their values can be converted to each other. 
-* Types can be defined within function bodies.
+- A new defined type and its respective source type in type definitions are two distinct types.
+- Two different defined types are always two distinct types.
+- The new defined type and the source type will share the same underlying type (see below for what are underlying types), and their values can be converted to each other.
+- Types can be defined within function bodies.
