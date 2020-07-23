@@ -2,39 +2,42 @@
 
 # Go Foundations
 
-- [**1. Introduction**](#1-introduction)
-  - [Use Cases:](#use-cases)
-  - [Why Go?](#why-go)
-- [**2. Setting Up Golang**](#2-setting-up-golang)
-  - [Learning Objectives:](#learning-objectives)
-  - [**Installation**](#installation)
-    - [Windows Installation](#windows-installation)
-    - [Linux Installation](#linux-installation)
-      - [Step One: Install Go Language](#step-one-install-go-language)
-      - [Step 2: Set up Go environment](#step-2-set-up-go-environment)
-- [**3. Types**](#3-types)
-  - [**Concepts**](#concepts)
-  - [**Intro**](#intro)
-  - [**Numbers**](#numbers)
-    - [Integers](#integers)
-    - [Float](#float)
-    - [Using Number Literals](#using-number-literals)
-    - [Rune and Byte](#rune-and-byte)
-  - [**Strings**](#strings)
-  - [**Boolean**](#boolean)
-    - [Operators](#operators)
-- [4. **Go Variables**](#4-go-variables)
-  - [Learning Objective:](#learning-objective)
-  - [Variable Concepts](#variable-concepts)
-  - [Skills](#skills)
-- [**Variables**](#variables)
-  - [**Declaration**](#declaration)
-  - [**Short Declaration**](#short-declaration)
-  - [**Multiple Variable Values and Declarations**](#multiple-variable-values-and-declarations)
-  - [**Constants**](#constants)
-  - [**Lab 1 - Declare and use Variables**](#lab-1---declare-and-use-variables)
-  - [**Scope**](#scope)
-  - [**Type Definitions**](#type-definitions)
+- [Go Foundations](#go-foundations)
+  - [**1. Introduction**](#1-introduction)
+    - [Use Cases:](#use-cases)
+    - [Why Go?](#why-go)
+  - [**2. Setting Up Golang**](#2-setting-up-golang)
+    - [Learning Objectives:](#learning-objectives)
+    - [**Installation**](#installation)
+      - [Windows Installation](#windows-installation)
+      - [Linux Installation](#linux-installation)
+        - [Step One: Install Go Language](#step-one-install-go-language)
+        - [Step 2: Set up Go environment](#step-2-set-up-go-environment)
+  - [**3. Types**](#3-types)
+    - [**Concepts**](#concepts)
+    - [**Intro**](#intro)
+    - [**Numbers**](#numbers)
+      - [Integers](#integers)
+      - [Float](#float)
+      - [Using Number Literals](#using-number-literals)
+      - [Rune and Byte](#rune-and-byte)
+    - [**Strings**](#strings)
+    - [**Boolean**](#boolean)
+      - [Operators](#operators)
+  - [4. **Go Variables**](#4-go-variables)
+    - [Learning Objective:](#learning-objective)
+    - [Variable Concepts](#variable-concepts)
+    - [Skills](#skills)
+  - [**Variables**](#variables)
+    - [**Declaration**](#declaration)
+    - [**Short Declaration**](#short-declaration)
+    - [**Multiple Variable Values and Declarations**](#multiple-variable-values-and-declarations)
+    - [**Constants**](#constants)
+    - [**Lab 1 - Declare and use Variables**](#lab-1---declare-and-use-variables)
+    - [**Scope**](#scope)
+    - [**Type Definitions**](#type-definitions)
+  - [5. **Control Structures**](#5-control-structures)
+    - [**If Statements**](#if-statements)
 
 ---
 
@@ -634,3 +637,169 @@ x = 5
 - Two different defined types are always two distinct types.
 - The new defined type and the source type will share the same underlying type (see below for what are underlying types), and their values can be converted to each other.
 - Types can be defined within function bodies.
+
+
+*__Type Alias__*
+
+There is another type of `type` definition in Go and it is known as a `type alias` that was introduced in `go.1.9`. 
+
+The two types we covered in the `types` session, `rune` and `byte` are the only two built-in types. You can declare an `alias type` by using the `=` after the type identifier.
+
+```Golang
+type TimeZone int // (1)
+type MyTimeZone = TimeZone // (2)
+var y MyTimeZone
+var x TimeZone
+
+x = 5
+y = 123
+```
+
+1. Type TimeZone
+2. Type alias MyTimeZone
+
+There is another concept of defined and undefined type we won't go over, but if you would like to dig deeper into type definitions and what all this means, [Go 101](https://go101.org/article/type-system-overview.html) covers a thorough understanding of types in Go.
+
+***
+
+## 5. **Control Structures**
+
+### **If Statements**
+
+If statements, also known as `if-then` or `if-then-else ` statements, are how we tell a program what it should do based on some true/false condition.
+
+In pseudo code for basic if structures in just about any language:
+
+<br>
+
+Pseudo code of if logic:
+
+```Golang
+if a equals b then 
+  do something
+else if a equals c then
+  do something else
+else 
+  do some default thing
+```
+
+In Go, a similar statement would look like: 
+
+If, else if, else
+
+```Golang
+a, b, c := 1, 2, 1
+
+if a == b {
+    fmt.Println("A and B are the same!")
+} else if a == c {
+    fmt.Println("A and C are the same!")
+} else {
+    fmt.Println("Nothing is equal to A!")
+}
+```
+
+You are not required to have all three conditions. One of the most common uses of `if` tends to be just the `if`, without an else, or an `else if`:
+
+Single if statement
+
+```Golang
+a, b := 1,1
+
+if a == b {
+    fmt.Println("A and B are the same!")
+}
+```
+
+**__Boolean Operators with `if`__**
+
+Boolean operators( `&&`, `||`, `!`, etc) can be used to check multiple conditions in an if statement.
+
+If with boolean operators
+
+```Golang
+a, b, c := 1, 1, 1
+if a === b || a == c && c != b {
+    fmt.Println("A has an equal!")
+}
+```
+
+**__A Case for Parentheses__**
+
+A lot of programming languages out there force you to put parenthesis around conditionals in if-statements. Golang does not allow parenthesis to occur around the **whole** conditional, but there are times you might want to put parenthesis around part of the conditional to have one operation happen earlier in the order of operations. 
+
+The following shows a case for when the placement of parenthesis can affect output. 
+
+```Golang
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  a, b, c := 1, 1, 1
+
+  if c != b && a ==b || a == c {
+    fmt.Println("Tru!")
+  }
+
+  if c != b && (a == b || a == c) {
+    fmt.Println("Trew!")
+  }
+}
+```
+
+**__"Short" If Statements__**
+
+Short, also know as single line, if statements contains at least one variable declaration, followed by an evaluation: 
+
+Short if statements
+
+```Golang
+y := 4
+
+if x := y % 2; x == 0 {
+  fmt.Println("Even!")
+}
+```
+
+In a single `if` statement:
+
+- declares a new variable `x`
+- assigns the result of `y % 2` (remainder of `4/2` is `0`, so `x` is assigned type `int` with a value of `0`)
+- The x is then used after the semicolon `;` as a conditional to determine if it is `== 0` 
+
+*__Scope of `x`__*
+
+```Golang
+func main () {
+  
+  y := 4
+  if x := y % 2; x == 0 {
+    fmt.Println("Even")
+  }
+  fmt.Println(x)
+}
+```
+
+In this case, the scope of `x` is not accessible to the print statement outside the `if` control structure.
+
+**__If syntax options__**
+
+It is possivle to write if statements all on one line. Some prefer this, others don't care. Most editors with built-in auto formatting will force multi-line statements.
+
+The two examples from previous section could be written as: 
+
+```Golang
+a, b, c := 1, 2, 1
+
+if a == b {fmt.Println("A and B are the same!")} else if b == c{fmt.Println("no")} else { fmt.Println("No matches")}
+
+if a == b {fmt.Println("A and B are the same!")}
+```
+
+The only real rule with syntax is that a left curly brace `{` must come before a new line character after the condition.
+
+
+
