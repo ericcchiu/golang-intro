@@ -24,11 +24,11 @@
     - [**Strings**](#strings)
     - [**Boolean**](#boolean)
       - [Operators](#operators)
-  - [4. **Go Variables**](#4-go-variables)
-    - [Learning Objective:](#learning-objective)
-    - [Variable Concepts](#variable-concepts)
-    - [Skills](#skills)
-  - [**Variables**](#variables)
+  - [**4. Go Variables**](#4-go-variables)
+    - [**Learning Objective:**](#learning-objective)
+    - [**Variable Concepts**](#variable-concepts)
+    - [**Skills**](#skills)
+    - [**Variables**](#variables)
     - [**Declaration**](#declaration)
     - [**Short Declaration**](#short-declaration)
     - [**Multiple Variable Values and Declarations**](#multiple-variable-values-and-declarations)
@@ -38,6 +38,18 @@
     - [**Type Definitions**](#type-definitions)
   - [5. **Control Structures**](#5-control-structures)
     - [**If Statements**](#if-statements)
+    - [**Switch Statements**](#switch-statements)
+      - [Default](#default)
+      - [Short and More Complex Evaluations](#short-and-more-complex-evaluations)
+      - [Switch with no Conditon](#switch-with-no-conditon)
+    - [**Lab 2: Switch Statement**](#lab-2-switch-statement)
+    - [**For - One Loop to Rule Them All!**](#for---one-loop-to-rule-them-all)
+      - [Continue, Break, Return and Labels](#continue-break-return-and-labels)
+        - [Break & Return](#break--return)
+      - [Continue](#continue)
+      - [Labels](#labels)
+      - [Using Labels with `continue` and `break`](#using-labels-with-continue-and-break)
+      - [Goto](#goto)
 
 ---
 
@@ -353,11 +365,11 @@ func main() {
 
 ---
 
-## 4. **Go Variables**
+## **4. Go Variables**
 
-### Learning Objective:
+### **Learning Objective:**
 
-### Variable Concepts
+### **Variable Concepts**
 
 - Variable Declarations
 - Short Variable Declarations
@@ -366,14 +378,14 @@ func main() {
 - Scope
 - Type Definitions
 
-### Skills
+### **Skills**
 
 - Defining variables for given types
 - Using variables in place of literals
 - Be able to cleanly define multiple variables
 - Get a basic understanding of scope in Go
 
-## **Variables**
+### **Variables**
 
 _**Basics**_
 
@@ -789,7 +801,7 @@ In this case, the scope of `x` is not accessible to the print statement outside 
 
 It is possivle to write if statements all on one line. Some prefer this, others don't care. Most editors with built-in auto formatting will force multi-line statements.
 
-The two examples from previous section could be written as: 
+The two examples from previous section could be written as:
 
 ```Golang
 a, b, c := 1, 2, 1
@@ -802,4 +814,277 @@ if a == b {fmt.Println("A and B are the same!")}
 The only real rule with syntax is that a left curly brace `{` must come before a new line character after the condition.
 
 
+**Lab 1: If Statements**
+**Setup**
+1. Follow the instructions in the readme for the go foundations lab
+2. Open and complete the `ifthen.go` file. 
 
+### **Switch Statements**
+
+Switch statements are often used when a result of a conditional could result in many different decisions.
+
+Although this is ok in an `if` statement:
+
+Verbose if else-if statement
+
+```Golang
+if a == 1 {
+  fmt.Println("Choice 1")
+} else if a == 2 {
+  fmt.Println("Choice 2")
+} else if a == 3 {
+  fmt.Println("Choice 3")
+} else if a == 4 {
+  fmt.Println("Choice 4")
+}
+```
+
+The same logic could be coded more cleanly as a `switch` statement:
+
+```Golang
+switch a {
+  case 1: 
+    fmt.Println("Choice1")
+  case 2: 
+    fmt.Println("Choice2")
+  case 3: 
+    fmt.Println("Choice 3")
+  case 4:
+    fmt.Println("Choice 4")  
+}
+```
+
+#### Default
+
+Similar to the `else` in an `if-then-else` statement, there is an option to provide default behavior if none of the conditions in a `switch` block are true. With the `switch` statement, this is done with the `default` keyword:
+
+Switch with a default option
+
+```Golang
+switch a {
+  case 1: 
+    fmt.Println("Choice1")
+  case 2: 
+    fmt.Println("Choice2")
+  case 3: 
+    fmt.Println("Choice 3")
+  case 4:
+    fmt.Println("Choice 4")  
+  default:
+    fmt.Println("No valid choice")
+}
+```
+
+#### Short and More Complex Evaluations
+
+As with the short `if` statements, you can have "in-line declarations" when starting with the `switch statement`.
+
+Short switch statement
+
+```Golang
+package main 
+
+import (
+  "fmt"
+  "time"
+)
+func main() {
+  switch time.Now().Weekday() {
+  case time.Saturday, time.Sunday: 
+    fmt.Println("It's the weekend")
+  }
+  default:
+    fmt.Println("It's a weekday")
+}
+```
+
+#### Switch with no Conditon
+
+A `switch` statement does not require a condition. It can reference another in-scope variable or function to determine if any of the cases are true. 
+
+Switch statement with no conditions
+
+```Golang
+package main 
+
+import (
+  "fmt"
+  "time"
+)
+
+func main () {
+  t := time.Now()
+  switch {
+  case t.Hour() < 12:
+    fmt.Println("It's before noon")
+  default: 
+    fmt.Println("It's after noon")
+  }
+}
+```
+
+### **Lab 2: Switch Statement**
+1. Follow the setup instructions in lab 1
+2. Open `switch.go` in your editor and follow the instructions in the readme.
+
+***
+
+### **For - One Loop to Rule Them All!**
+
+First, what is a loop? In programming a loop is simply a way to do repetitive work. 
+
+*Code that should probably be in a loop*
+
+```Golang
+// Print numbers 0 - 4
+fmt.Println(0)
+fmt.Println(1)
+fmt.Println(2)
+fmt.Println(3)
+fmt.Println(4)
+```
+
+Instead we could use a loop to automatically repeat a block of code for us based on some condition.
+
+Golang only has one loop and its name is `for`. We'll look at how to use the `for` loop traditionally and then explore how to apply `for` to alternative looping options you may haveseen in other languages. 
+
+*Basic iterative for loop*
+
+```Golang
+for i := 0; i < 5; i++ {
+  fmt.Println(i)
+}
+```
+
+From here, the next most common loop is traditionally a `while` loop. `while true`, `do something`
+
+In Go, you simply replace `while` with `for` and it works the same. 
+
+*While style loop*
+
+```Golang
+run := true // (1)
+for run {
+  fmt.Println("Hello")
+  run := false // We mark it false and the loop will stop (3)
+}
+```
+
+1. Declare a `bool` called run by setting it to `true`
+2. Create a `for` loop that will run until `run` is false
+3. Set `run` to `false` so the loop will bot run again.
+<br/>
+
+#### Continue, Break, Return and Labels
+
+You do not need a condition in a for loop, but you need to be careful. 
+
+My first Golang infinite loop.
+
+```Golang
+for {
+  // (1)
+}
+```
+
+1. `true` is inferred here, and because we never toggle a false, this will run for ever. 
+
+So if we don't have access to a variable, how can we exit this loop?
+
+##### Break & Return
+
+Using `break`
+
+```Golang
+for {
+  return
+}
+```
+
+#### Continue
+
+If you are in a loop and want to skip to the next iteration in at a particular bloc, you can use the `continue` keyword to begin the next iteration. 
+
+```Golang
+func main() {
+  for i := 0; i < 10; i++ {
+    if x := i % 2; x == 0 {
+      continue
+    }
+    fmt.Println(i)
+  }
+}
+```
+
+#### Labels
+
+Labels can be added as part of your code before a statement. When used, they can be provided as arguments to a few key words as an indicator of where in the code to continue executing from. Labels can be passed stated after one of the following keywords to jump to a label in the code: 
+
+- break
+- continue
+- goto
+
+Of the above, `goto` is the only keyword where the label is required as an argument. 
+
+#### Using Labels with `continue` and `break`
+
+Multiple Labels on Nested loops
+
+```Golang
+func main() {
+  MyLoop: 
+    for l := 0; l < 5; l++ {
+      Derp: 
+        for i := 0; i < 10; i++ {
+          fmt.Println("even")
+          continue Derp // (1)
+        }
+        fmt.Println("odd")
+        break MyLoop // (2)
+    }
+}
+```
+
+1. Skip the iteration and continue from `Derp` label
+2. Break out MyLoop
+
+#### Goto
+
+As stated berfore, `goto` is the only keyword that a label is not optional. There are a couple of rules to keep in mind with `goto`:
+
+- A `goto` statement transfers control to the statement with the corresponding label within the same function.
+- Executing the `goto` statement must not cause any variables to come into scope that there were not already in scope at the point of the goto. 
+- A `goto` statement outside a block cannot jump to a label inside that block 
+
+The following examples *will cause an error*
+
+Creates a new variable between the goto and label
+
+```Golang
+goto L // BAD
+  v := 3 // New variable
+
+L: 
+  someCodeCalled()
+```
+
+Cannot "goto" a child or sibling block
+
+```Golang
+if n%2 == 1 {
+  goto L1
+} 
+
+for n > 0 {
+  f()
+  n--
+
+L1:
+  f()
+  n--
+}
+```
+
+However, you can use `goto` to accomplish things, like creating a loop.
+
+Reproducing a Loop with Goto
