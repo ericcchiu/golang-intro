@@ -50,6 +50,12 @@
       - [Labels](#labels)
       - [Using Labels with `continue` and `break`](#using-labels-with-continue-and-break)
       - [Goto](#goto)
+    - [**Lab 3: Loops**](#lab-3-loops)
+    - [Putting it All Together: If, Switch and Loops](#putting-it-all-together-if-switch-and-loops)
+  - [6. **Array, Slices and Maps**](#6-array-slices-and-maps)
+    - [Concepts](#concepts-1)
+    - [Objectives](#objectives)
+    - [Arrays](#arrays)
 
 ---
 
@@ -1088,3 +1094,104 @@ L1:
 However, you can use `goto` to accomplish things, like creating a loop.
 
 Reproducing a Loop with Goto
+
+```Golang
+func main() {
+  i := 0
+  GoHere:
+    fmt.Println("Where I will go", i+1)
+
+    if i == 10 {
+      return
+    }
+    goto GoHere
+}
+```
+
+### **Lab 3: Loops**
+
+1. Follow the setup instruction in lab1
+2. Open and complete `loop.go` in your editor.
+
+***
+
+### Putting it All Together: If, Switch and Loops
+
+```Golang
+package main
+
+import "fmt"
+
+func main() {
+  for i := 0; i <= 500; i++ {
+    // Is the number even?
+    if x := i % 2; x == 0 {
+      fmt.Printf("%d is Even \n", i)
+    }
+
+    // Do something based on what i is
+    switch i {
+      case 100: 
+        fmt.Println("400 to go!")
+      case 125:
+        fmt.Println("You know what? I'm done!")
+        i += 300
+      case 480
+        fmt.Println("That's it.")
+        break
+        fmt.Println("Done")
+    }
+  }
+}
+```
+
+***
+
+## 6. **Array, Slices and Maps**
+
+### Concepts
+* Creating and Using
+  * Arrays
+  * Slices
+  * Maps
+* Using range to loop over arrays, slices and maps
+
+### Objectives
+
+* Create an array of a given size and read/write values
+* Determine the length of an array, slice, and map
+* Append to a slice
+* Understanding looping over strings 
+
+### Arrays 
+
+Arrays in Go can be defined as a fixed size collection of elements of the same type. 
+
+You can have an array of any type in Go. 
+
+Syntax: `[size]type` or `[size as int]type{comma separated literals}`
+
+* Example 1: `[6]strings` string array with a size of 6
+* Example 2: `[5]int{1, 2, 3, 4, 5}` int array with a size of 5, and default values
+* Example 3: `[...]int{1,2,3,4,5}` The same as example 2, except the size will be determined based on the number of initial elements. In this case, 5. 
+
+**Quick Notes on Working with Array Variables:**
+
+* Arrays can be declared with the same rules as any variable. 
+* An array's element type cannot change
+* An array's size cannot change
+
+An example of declaring an array
+
+```Golang
+  dogs := [4]string{}
+```
+
+The above will create an empty array, that can hold up to 4 strings and assign it to the variable `dogs`.
+
+
+
+
+
+
+

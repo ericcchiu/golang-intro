@@ -47,7 +47,7 @@ Then print "Out of range"
 
 Meet the requirements using a switch statement. 
 
-**Lab 3: Loops**
+## Lab 3: Loops 
 
 Work in the file: `loop.go` in your editor. 
 
