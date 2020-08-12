@@ -650,10 +650,9 @@ x = 5
 - The new defined type and the source type will share the same underlying type (see below for what are underlying types), and their values can be converted to each other.
 - Types can be defined within function bodies.
 
-
 *__Type Alias__*
 
-There is another type of `type` definition in Go and it is known as a `type alias` that was introduced in `go.1.9`. 
+There is another type of `type` definition in Go and it is known as a `type alias` that was introduced in `go.1.9`.
 
 The two types we covered in the `types` session, `rune` and `byte` are the only two built-in types. You can declare an `alias type` by using the `=` after the type identifier.
 
@@ -672,30 +671,28 @@ y = 123
 
 There is another concept of defined and undefined type we won't go over, but if you would like to dig deeper into type definitions and what all this means, [Go 101](https://go101.org/article/type-system-overview.html) covers a thorough understanding of types in Go.
 
-***
+---
 
 ## 5. **Control Structures**
 
 ### **If Statements**
 
-If statements, also known as `if-then` or `if-then-else ` statements, are how we tell a program what it should do based on some true/false condition.
+If statements, also known as `if-then` or `if-then-else` statements, are how we tell a program what it should do based on some true/false condition.
 
 In pseudo code for basic if structures in just about any language:
-
-<br>
 
 Pseudo code of if logic:
 
 ```Golang
-if a equals b then 
+if a equals b then
   do something
 else if a equals c then
   do something else
-else 
+else
   do some default thing
 ```
 
-In Go, a similar statement would look like: 
+In Go, a similar statement would look like:
 
 If, else if, else
 
@@ -738,9 +735,9 @@ if a === b || a == c && c != b {
 
 **__A Case for Parentheses__**
 
-A lot of programming languages out there force you to put parenthesis around conditionals in if-statements. Golang does not allow parenthesis to occur around the **whole** conditional, but there are times you might want to put parenthesis around part of the conditional to have one operation happen earlier in the order of operations. 
+A lot of programming languages out there force you to put parenthesis around conditionals in if-statements. Golang does not allow parenthesis to occur around the **whole** conditional, but there are times you might want to put parenthesis around part of the conditional to have one operation happen earlier in the order of operations.
 
-The following shows a case for when the placement of parenthesis can affect output. 
+The following shows a case for when the placement of parenthesis can affect output.
 
 ```Golang
 package main
@@ -764,7 +761,7 @@ func main() {
 
 **__"Short" If Statements__**
 
-Short, also know as single line, if statements contains at least one variable declaration, followed by an evaluation: 
+Short, also know as single line, if statements contains at least one variable declaration, followed by an evaluation:
 
 Short if statements
 
@@ -780,7 +777,7 @@ In a single `if` statement:
 
 - declares a new variable `x`
 - assigns the result of `y % 2` (remainder of `4/2` is `0`, so `x` is assigned type `int` with a value of `0`)
-- The x is then used after the semicolon `;` as a conditional to determine if it is `== 0` 
+- The x is then used after the semicolon `;` as a conditional to determine if it is `== 0`
 
 *__Scope of `x`__*
 
@@ -813,11 +810,11 @@ if a == b {fmt.Println("A and B are the same!")}
 
 The only real rule with syntax is that a left curly brace `{` must come before a new line character after the condition.
 
-
 **Lab 1: If Statements**
 **Setup**
+
 1. Follow the instructions in the readme for the go foundations lab
-2. Open and complete the `ifthen.go` file. 
+2. Open and complete the `ifthen.go` file.
 
 ### **Switch Statements**
 
@@ -843,11 +840,11 @@ The same logic could be coded more cleanly as a `switch` statement:
 
 ```Golang
 switch a {
-  case 1: 
+  case 1:
     fmt.Println("Choice1")
-  case 2: 
+  case 2:
     fmt.Println("Choice2")
-  case 3: 
+  case 3:
     fmt.Println("Choice 3")
   case 4:
     fmt.Println("Choice 4")  
@@ -862,11 +859,11 @@ Switch with a default option
 
 ```Golang
 switch a {
-  case 1: 
+  case 1:
     fmt.Println("Choice1")
-  case 2: 
+  case 2:
     fmt.Println("Choice2")
-  case 3: 
+  case 3:
     fmt.Println("Choice 3")
   case 4:
     fmt.Println("Choice 4")  
@@ -882,7 +879,7 @@ As with the short `if` statements, you can have "in-line declarations" when star
 Short switch statement
 
 ```Golang
-package main 
+package main
 
 import (
   "fmt"
@@ -890,7 +887,7 @@ import (
 )
 func main() {
   switch time.Now().Weekday() {
-  case time.Saturday, time.Sunday: 
+  case time.Saturday, time.Sunday:
     fmt.Println("It's the weekend")
   }
   default:
@@ -900,12 +897,12 @@ func main() {
 
 #### Switch with no Conditon
 
-A `switch` statement does not require a condition. It can reference another in-scope variable or function to determine if any of the cases are true. 
+A `switch` statement does not require a condition. It can reference another in-scope variable or function to determine if any of the cases are true.
 
 Switch statement with no conditions
 
 ```Golang
-package main 
+package main
 
 import (
   "fmt"
@@ -917,23 +914,24 @@ func main () {
   switch {
   case t.Hour() < 12:
     fmt.Println("It's before noon")
-  default: 
+  default:
     fmt.Println("It's after noon")
   }
 }
 ```
 
 ### **Lab 2: Switch Statement**
+
 1. Follow the setup instructions in lab 1
 2. Open `switch.go` in your editor and follow the instructions in the readme.
 
-***
+---
 
 ### **For - One Loop to Rule Them All!**
 
-First, what is a loop? In programming a loop is simply a way to do repetitive work. 
+First, what is a loop? In programming a loop is simply a way to do repetitive work.
 
-*Code that should probably be in a loop*
+#### Code that should probably be in a loop
 
 ```Golang
 // Print numbers 0 - 4
@@ -946,9 +944,9 @@ fmt.Println(4)
 
 Instead we could use a loop to automatically repeat a block of code for us based on some condition.
 
-Golang only has one loop and its name is `for`. We'll look at how to use the `for` loop traditionally and then explore how to apply `for` to alternative looping options you may haveseen in other languages. 
+Golang only has one loop and its name is `for`. We'll look at how to use the `for` loop traditionally and then explore how to apply `for` to alternative looping options you may haveseen in other languages.
 
-*Basic iterative for loop*
+#### Basic iterative for loop*
 
 ```Golang
 for i := 0; i < 5; i++ {
@@ -958,9 +956,9 @@ for i := 0; i < 5; i++ {
 
 From here, the next most common loop is traditionally a `while` loop. `while true`, `do something`
 
-In Go, you simply replace `while` with `for` and it works the same. 
+In Go, you simply replace `while` with `for` and it works the same.
 
-*While style loop*
+#### While style loop
 
 ```Golang
 run := true // (1)
@@ -973,11 +971,10 @@ for run {
 1. Declare a `bool` called run by setting it to `true`
 2. Create a `for` loop that will run until `run` is false
 3. Set `run` to `false` so the loop will bot run again.
-<br/>
 
 #### Continue, Break, Return and Labels
 
-You do not need a condition in a for loop, but you need to be careful. 
+You do not need a condition in a for loop, but you need to be careful.
 
 My first Golang infinite loop.
 
@@ -987,7 +984,7 @@ for {
 }
 ```
 
-1. `true` is inferred here, and because we never toggle a false, this will run for ever. 
+1. `true` is inferred here, and because we never toggle a false, this will run for ever.
 
 So if we don't have access to a variable, how can we exit this loop?
 
@@ -1003,7 +1000,7 @@ for {
 
 #### Continue
 
-If you are in a loop and want to skip to the next iteration in at a particular bloc, you can use the `continue` keyword to begin the next iteration. 
+If you are in a loop and want to skip to the next iteration in at a particular bloc, you can use the `continue` keyword to begin the next iteration.
 
 ```Golang
 func main() {
@@ -1018,13 +1015,13 @@ func main() {
 
 #### Labels
 
-Labels can be added as part of your code before a statement. When used, they can be provided as arguments to a few key words as an indicator of where in the code to continue executing from. Labels can be passed stated after one of the following keywords to jump to a label in the code: 
+Labels can be added as part of your code before a statement. When used, they can be provided as arguments to a few key words as an indicator of where in the code to continue executing from. Labels can be passed stated after one of the following keywords to jump to a label in the code:
 
 - break
 - continue
 - goto
 
-Of the above, `goto` is the only keyword where the label is required as an argument. 
+Of the above, `goto` is the only keyword where the label is required as an argument.
 
 #### Using Labels with `continue` and `break`
 
@@ -1032,9 +1029,9 @@ Multiple Labels on Nested loops
 
 ```Golang
 func main() {
-  MyLoop: 
+  MyLoop:
     for l := 0; l < 5; l++ {
-      Derp: 
+      Derp:
         for i := 0; i < 10; i++ {
           fmt.Println("even")
           continue Derp // (1)
@@ -1053,8 +1050,8 @@ func main() {
 As stated berfore, `goto` is the only keyword that a label is not optional. There are a couple of rules to keep in mind with `goto`:
 
 - A `goto` statement transfers control to the statement with the corresponding label within the same function.
-- Executing the `goto` statement must not cause any variables to come into scope that there were not already in scope at the point of the goto. 
-- A `goto` statement outside a block cannot jump to a label inside that block 
+- Executing the `goto` statement must not cause any variables to come into scope that there were not already in scope at the point of the goto.
+- A `goto` statement outside a block cannot jump to a label inside that block
 
 The following examples *will cause an error*
 
@@ -1064,7 +1061,7 @@ Creates a new variable between the goto and label
 goto L // BAD
   v := 3 // New variable
 
-L: 
+L:
   someCodeCalled()
 ```
 
@@ -1073,7 +1070,7 @@ Cannot "goto" a child or sibling block
 ```Golang
 if n%2 == 1 {
   goto L1
-} 
+}
 
 for n > 0 {
   f()
@@ -1088,3 +1085,4 @@ L1:
 However, you can use `goto` to accomplish things, like creating a loop.
 
 Reproducing a Loop with Goto
+
