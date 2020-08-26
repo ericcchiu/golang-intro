@@ -656,7 +656,7 @@ x = 5
 - The new defined type and the source type will share the same underlying type (see below for what are underlying types), and their values can be converted to each other.
 - Types can be defined within function bodies.
 
-*__Type Alias__*
+_**Type Alias**_
 
 There is another type of `type` definition in Go and it is known as a `type alias` that was introduced in `go.1.9`.
 
@@ -726,7 +726,7 @@ if a == b {
 }
 ```
 
-**__Boolean Operators with `if`__**
+\***\*Boolean Operators with `if`\*\***
 
 Boolean operators( `&&`, `||`, `!`, etc) can be used to check multiple conditions in an if statement.
 
@@ -739,7 +739,7 @@ if a === b || a == c && c != b {
 }
 ```
 
-**__A Case for Parentheses__**
+\***\*A Case for Parentheses\*\***
 
 A lot of programming languages out there force you to put parenthesis around conditionals in if-statements. Golang does not allow parenthesis to occur around the **whole** conditional, but there are times you might want to put parenthesis around part of the conditional to have one operation happen earlier in the order of operations.
 
@@ -765,7 +765,7 @@ func main() {
 }
 ```
 
-**__"Short" If Statements__**
+\***\*"Short" If Statements\*\***
 
 Short, also know as single line, if statements contains at least one variable declaration, followed by an evaluation:
 
@@ -785,11 +785,11 @@ In a single `if` statement:
 - assigns the result of `y % 2` (remainder of `4/2` is `0`, so `x` is assigned type `int` with a value of `0`)
 - The x is then used after the semicolon `;` as a conditional to determine if it is `== 0`
 
-*__Scope of `x`__*
+_**Scope of `x`**_
 
 ```Golang
 func main () {
-  
+
   y := 4
   if x := y % 2; x == 0 {
     fmt.Println("Even")
@@ -800,7 +800,7 @@ func main () {
 
 In this case, the scope of `x` is not accessible to the print statement outside the `if` control structure.
 
-**__If syntax options__**
+\***\*If syntax options\*\***
 
 It is possivle to write if statements all on one line. Some prefer this, others don't care. Most editors with built-in auto formatting will force multi-line statements.
 
@@ -853,7 +853,7 @@ switch a {
   case 3:
     fmt.Println("Choice 3")
   case 4:
-    fmt.Println("Choice 4")  
+    fmt.Println("Choice 4")
 }
 ```
 
@@ -872,7 +872,7 @@ switch a {
   case 3:
     fmt.Println("Choice 3")
   case 4:
-    fmt.Println("Choice 4")  
+    fmt.Println("Choice 4")
   default:
     fmt.Println("No valid choice")
 }
@@ -952,7 +952,7 @@ Instead we could use a loop to automatically repeat a block of code for us based
 
 Golang only has one loop and its name is `for`. We'll look at how to use the `for` loop traditionally and then explore how to apply `for` to alternative looping options you may haveseen in other languages.
 
-#### Basic iterative for loop*
+#### Basic iterative for loop\*
 
 ```Golang
 for i := 0; i < 5; i++ {
@@ -1059,7 +1059,7 @@ As stated berfore, `goto` is the only keyword that a label is not optional. Ther
 - Executing the `goto` statement must not cause any variables to come into scope that there were not already in scope at the point of the goto.
 - A `goto` statement outside a block cannot jump to a label inside that block
 
-The following examples *will cause an error*
+The following examples _will cause an error_
 
 Creates a new variable between the goto and label
 
@@ -1146,7 +1146,7 @@ func main() {
 
 ## 6. **Array, Slices and Maps**
 
-### Concepts
+### **Theory**
 
 - Creating and Using
   - Arrays
@@ -1154,14 +1154,14 @@ func main() {
   - Maps
 - Using range to loop over arrays, slices and maps
 
-### Objectives
+### **Objectives**
 
 - Create an array of a given size and read/write values
 - Determine the length of an array, slice, and map
 - Append to a slice
 - Understanding looping over strings
 
-### Arrays
+### **Arrays**
 
 Arrays in Go can be defined as a fixed size collection of elements of the same type.
 
@@ -1186,3 +1186,297 @@ An example of declaring an array
 ```
 
 The above will create an empty array, that can hold up to 4 strings and assign it to the variable `dogs`.
+
+&nbsp;
+
+#### **Indexes**
+
+Before we can assign any values to this, we need to understand how to reference an `index` of an array. An `index` simply means the position a value is in. The first element in an array is always at `index 0` and increments by one for each item in the array.
+
+In the `dogs` variable above, we created an array wih the size of `4`. So it has integers `0`, `1`, and `3` as indices.
+
+To visualize this, imagine the following table is a representation of our `dogs` array:
+
+|  Index:  | `0` | `1` | `2` | `3` |
+| :------: | :-- | :-- | :-- | :-- |
+| Elements | ""  | ""  | ""  | ""  |
+
+&nbsp;
+
+#### **Assigning Values**
+
+##### Specific Values
+
+To populate the elements, you need to supply the index of the element you want to store the value in.
+
+Assigning Values by Index
+
+```Golang
+dogs := [4]string{} // Create an array with size 4
+dogs[0] = "German Shepherd" // First position, index 0
+dogs[3] = "Boxer" // Last position, index 3
+```
+
+This would change our table to:
+
+|  Index:  | `0`               | `1` | `2` | `3`     |
+| :------: | :---------------- | :-- | :-- | :------ |
+| Elements | "German Shepherd" | ""  | ""  | "Boxer" |
+
+As you can see, you are not required to follow any order when assigning a value. As long as the index is in the array, you can assign a value to that element at the provided index.
+
+&nbsp;
+
+##### Initiliazing With Values
+
+Another option is to initialize the variable with each element assigned a value.
+
+The dogs Array Initialized With Literals
+
+|   Index   | `0`      | `1`        | `2`               | `3`         |
+| :-------: | :------- | :--------- | :---------------- | ----------- |
+| Elements: | “Collie” | “Labrador” | “German Shephard” | “Dalmatian” |
+
+&nbsp;
+
+#### **Reading Values**
+
+Reading values is done much like writing values. To read a value from an array you just need to reference the index of the element you want to read the value of.
+
+Simple Read and Print
+
+```Golang
+dogs := [4]string{"Collie", "Labrador", "German Shephard", "Dalmatian"}
+fmt.Println(dogs[2]) // Would print German Shepherd
+```
+
+We can also use the value of an element to declare a new variable.
+
+Using the value of an array to declare a new string
+
+```Golang
+dogs := [4]string{"Collie", "Labrador", "German Shephard", "Dalmatian"}
+dog := dogs[2]
+```
+
+&nbsp;
+
+##### Determining the Size of an Array
+
+The size of an array is not always obvious. For example, it is possible to size an array based on the result of a calculation. So, if you want to determine what the size of an array is, you can utilize the built-in `len()` function.
+
+```Golang
+dogs := [4]string{"Collie", "Labrador","German Shepherd"}
+size := len(dogs)
+```
+
+`len()` returns an `int` with the size of the array it is supplied.
+
+In this example, `size` is assigned an `int` value of `4`.
+
+#### Quick Quiz
+
+Given the following array:
+
+```Golang
+numbers := [4]int{1,2}
+```
+
+- What type are the elements of this array?
+- Without using `len()`, what is the size of the `numbers` array?
+- What is the value of the element at `numbers[3]`?
+
+&nbsp;
+
+### **Slices**
+
+Slices are very much like arrays, but they have a lot more flexibility. We will demonstrate the differences slices have from arrays and how these differences make slices more flexible.
+
+You can initialize a `slice` just like `array` by leaving off the size:
+
+Basic Slice Declaration
+
+```Golang
+dogs := []string{"Collie", "Labrador", "German Shepard", "Dalmatian"}
+```
+
+From here, you can read andwrite to the slice exactly how you would an array.
+
+```Go
+dogs[0] = "Boxer"
+```
+
+Changes the value of the element at index `0` to `"Boxer"`
+
+#### **Creating a slice from an array**
+
+To create a slice from an array you can use the `[low:high]` expression:
+
+First lets define what low and high mean.
+
+- **low**: the lowest index you want to start at. In this case, index 1.
+
+- **high**: the highest index you want to **stop at, but not include.** You can think of this as the value at `index high - 1`. High can also be the length of the array.
+
+Using the [low:high] expression
+
+```Go
+arr := [5]string{"a", "b", "c", "d", "e"}
+x := arr[1:3] // x now is a slice with ["b", "c"]
+```
+
+This creates a slice with a length of 2, and the values of `b` and `c`. Let's use the following table to explore how that works.
+
+| **Index**    |  0  |   1   |   2   |  3  | 4   |
+| :----------- | :-: | :---: | :---: | :-: | --- |
+| **Elments**  |  a  | **b** | **c** |  d  | e   |
+| **low:high** |     |   1   |   3   |     |
+| **Return**   |     | **b** | **c** |     |     |
+
+You can also copy an entire array to a slice using `low:high`. When you omit `low` or `high` they defailt to the `0` and `len(array)`, respectively. Here are several methods:
+
+Copy an entire array many different ways
+
+```Go
+arr := [5]string{"a", "b", "c", "d", "e"}
+
+verbose := arr[o:len(arr)] // (1)
+
+exact := arr[0:5] // (2)
+
+omitlow := arr[:5] // (3)
+
+omithigh := arr[0:] // (4)
+
+omitboth := arr[:] // (5)
+```
+
+1. Using the starting index of 0 as `low` and the length of the array as `high`
+
+2. Using the starting index of 0 as `low` and the literal `5` as `high`
+
+3. Omitting `low` and the literal `5` as `high`
+
+4. Using the starting index of 0 as `low` and omitting `high`
+
+5. Omitting both `high` and `low`
+
+#### **Sizing empty slices: Introducing make()**
+
+Lets look at another way to create a slice. Although you can resize a slice (and we will explore how to do that shortly) you sometimes want to start out with an initial size.
+
+For example, you could create a slice with the following syntax:
+
+```Go
+mySlice := []string{}
+```
+
+but this just creates a 0 length slice. With a 0 length slice, you have no indexes, therefore; you cannot read/write any values. (`mySlice[0]` would cause an error, because there is no index 0!)
+
+So how can we create an empty slice that is ready to work with?
+
+Creating an empty slice
+
+```Go
+mySlice := make([]string, 10)
+```
+
+This creates an empty slice, with 10 string type elements.
+
+#### **Slice Functions**
+
+There are two built-in function that you can use with slices to make common tasks easier.
+
+##### **append()**
+
+The `append()` built-in will allow you to easily grow a slice by adding elements.
+
+Append Examples
+
+```Go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  slice1 := []int{1, 2, 3}
+
+  // Append 1 or more individual elements to the slice
+  slice1 = append(slice1, 4,5)
+  fmt.Println(slice1)
+
+  slice2 := []int{6, 7, 8, 9}
+
+  // Append combine 2 slices
+  slice1 = append(slice1, slice2...)
+  fmt.Println(slice1)
+
+  slice3 := []int{5, 2, 3, 10, 11, 12, 0}
+
+  // Select specific elements in a slice to append
+  slice1 = append(slice1, slice3[3:6]...)
+
+  fmt.Println(slice1)
+}
+```
+
+The `...` following an array or slice is known as a `spread` operator. It extracts values of a given array. It is common to use this when merging slices, or passing them to `variadic functions`.
+
+Use `append` only to append new values to a given slice to avoid undesirable results. As [this example](https://goplay.space/#HgYXczZL-Id) demonstrates, you can get unexpected results from appending to a new slice. This [goes into detail on why](https://medium.com/@Jarema./golang-slice-append-gotcha-e9020ff37374).
+
+&nbsp;
+
+##### **copy()**
+
+Another method of growing a slice to copy the contents of one slice to a larger slice.
+
+Copy to a larger slice
+
+```Go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  slice1 := []int{1, 2, 3}
+  slice2 := make([]int, 6)
+
+  copy(slice2, slice1)
+
+  fmt.Println(slice2) // [1 2 3 0 0 0]
+}
+```
+
+`copy` is also a good method of assigning values to a newly created array.
+
+It's worth noting that Go will let you shrink a slice as well. If you copy a larger slice to a smaller one, it will drop elements that do not fit.
+
+```Go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  slice1 := []int{1, 2, 3, 4, 5, 6}
+  slice2 := make([]int, 2)
+  
+  copy(slice2, slice1)
+
+  fmt.Println(slice2) // [1, 2]
+}
+```
+
+#### **Further Reading on Arrays and Slices**
+
+For anyone interested in a deeper explanation of arrays and slices, the [official golang blog](https://blog.golang.org/) has [a great write up and additional examples](https://blog.golang.org/slices-intro).
+
+### **Lab 1: Arrays and Slices**
+
+Follow the instructions in foundations-labs folder for Arrays and Slices.
+
