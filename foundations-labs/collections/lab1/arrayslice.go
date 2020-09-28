@@ -6,7 +6,7 @@ import "fmt"
 Create an array named 'numbers' that contains, in order, 1,2,3,4, and 5 */
 func BasicArray() [5]int {
 	//=========================Code Below =================================//
-
+	numbers := [5]int{1, 2, 3, 4, 5}
 	//=========================Code Above =================================//
 	return numbers
 }
@@ -16,7 +16,7 @@ Create a slice named 'food' that contains "apple", "pizza", "taco", "cheese"
 */
 func BasicSlice() []string {
 	//=========================Code Below =================================//
-
+	food []string{'apple', 'pizza', 'taco', 'cheese'}
 	//=========================Code Above =================================//
 	return food
 }
