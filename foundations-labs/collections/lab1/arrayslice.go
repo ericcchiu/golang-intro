@@ -1,7 +1,5 @@
 package lab1
 
-import "fmt"
-
 /*BasicArray Exercise 1:
 Create an array named 'numbers' that contains, in order, 1,2,3,4, and 5 */
 func BasicArray() [5]int {
@@ -16,7 +14,7 @@ Create a slice named 'food' that contains "apple", "pizza", "taco", "cheese"
 */
 func BasicSlice() []string {
 	//=========================Code Below =================================//
-	food []string{'apple', 'pizza', 'taco', 'cheese'}
+	food := []string{"apple", "pizza", "taco", "cheese"}
 	//=========================Code Above =================================//
 	return food
 }
@@ -29,10 +27,10 @@ func BasicSlice() []string {
 */
 func MergeAndSubSlice(morefood []string) (food []string, sublist []string) {
 
-	//=========================Code Below =================================//
-	fmt.Println(morefood)
 	food = []string{"apple", "pizza"}
-
+	//=========================Code Below =================================//
+	food = append(food, morefood...)
+	sublist = morefood[1:4]
 	//=========================Code Above =================================//
 	return
 }

@@ -24,7 +24,7 @@
     - [**Strings**](#strings)
     - [**Boolean**](#boolean)
       - [Operators](#operators)
-  - [**4. Go Variables**](#4-go-variables)
+  - [4. **Go Variables**](#4-go-variables)
     - [**Learning Objective:**](#learning-objective)
     - [**Variable Concepts**](#variable-concepts)
     - [**Skills**](#skills)
@@ -44,6 +44,9 @@
       - [Switch with no Conditon](#switch-with-no-conditon)
     - [**Lab 2: Switch Statement**](#lab-2-switch-statement)
     - [**For - One Loop to Rule Them All!**](#for---one-loop-to-rule-them-all)
+      - [Code that should probably be in a loop](#code-that-should-probably-be-in-a-loop)
+      - [Basic iterative for loop\*](#basic-iterative-for-loop)
+      - [While style loop](#while-style-loop)
       - [Continue, Break, Return and Labels](#continue-break-return-and-labels)
         - [Break & Return](#break--return)
       - [Continue](#continue)
@@ -53,9 +56,25 @@
     - [**Lab 3: Loops**](#lab-3-loops)
     - [Putting it All Together: If, Switch and Loops](#putting-it-all-together-if-switch-and-loops)
   - [6. **Array, Slices and Maps**](#6-array-slices-and-maps)
-    - [Concepts](#concepts-1)
-    - [Objectives](#objectives)
-    - [Arrays](#arrays)
+    - [**Theory**](#theory)
+    - [**Objectives**](#objectives)
+    - [**Arrays**](#arrays)
+      - [**Indexes**](#indexes)
+      - [**Assigning Values**](#assigning-values)
+        - [Specific Values](#specific-values)
+        - [Initiliazing With Values](#initiliazing-with-values)
+      - [**Reading Values**](#reading-values)
+        - [Determining the Size of an Array](#determining-the-size-of-an-array)
+      - [Quick Quiz](#quick-quiz)
+    - [**Slices**](#slices)
+      - [**Creating a slice from an array**](#creating-a-slice-from-an-array)
+      - [**Sizing empty slices: Introducing make()**](#sizing-empty-slices-introducing-make)
+      - [**Slice Functions**](#slice-functions)
+        - [**append()**](#append)
+        - [**copy()**](#copy)
+      - [**Further Reading on Arrays and Slices**](#further-reading-on-arrays-and-slices)
+    - [**Lab 1: Arrays and Slices**](#lab-1-arrays-and-slices)
+    - [**Maps**](#maps)
 
 ---
 
@@ -1480,3 +1499,10 @@ For anyone interested in a deeper explanation of arrays and slices, the [officia
 
 Follow the instructions in foundations-labs folder for Arrays and Slices.
 
+### **Maps**
+
+Maps are similar to arrays and slices in that you have a collection of types. However, rather than accessing an element by an `index`, you access it by a `key` and the elements are unordered.
+
+**Syntax for creating a map**: `map[<key_type>]<value_type>`
+
+The **<key_type>** inside of the `[]` will determine the type of the key used to access value. The **<value_type>** following the `]` will determine the type of the value for that element.
