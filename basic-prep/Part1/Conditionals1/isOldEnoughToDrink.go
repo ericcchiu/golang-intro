@@ -1,4 +1,4 @@
-package main
+package conditionals1
 
 import "fmt"
 

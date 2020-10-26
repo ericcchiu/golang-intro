@@ -1,4 +1,4 @@
-package main
+package conditionals1
 
 func isOldEnoughToDrive(age int) bool {
 	if age >= 16 {
