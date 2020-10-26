@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	conditionals1.isOldEnoughToVote(18)
-	fmt.Println(conditionals1)
+	fmt.Println("Hello")
+	conditionals1.isOldEnoughToVote(23)
 }
