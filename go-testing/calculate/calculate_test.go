@@ -3,8 +3,6 @@ package calculate
 import (
 	"fmt"
 	"testing"
-
-	calculate "github.com/ericcchiu/golang-intro/go-testing/calculate"
 )
 
 func TestAdd(t *testing.T) {
@@ -26,7 +24,7 @@ func TestAdd(t *testing.T) {
 	for i, test := range addTests {
 		name := fmt.Sprintf("Test #%v", i)
 		t.Run(name, func(t *testing.T) {
-			result := calculate.Add(test.a, test.b)
+			result := Add(test.a, test.b)
 			if result != test.expected {
 				t.Errorf("Expected %v, but got %v", test.expected, result)
 			}
@@ -36,14 +34,9 @@ func TestAdd(t *testing.T) {
 		// 	t.Errorf("Expected %v, but got %v", test.expected, result)
 		// }
 	}
-
-	result := calculate.Add(3, 2)
-	if result != 5 {
-		t.Errorf("Expected 5, got %v", result)
-	}
 }
 func TestSubtract(t *testing.T) {
-	result := calculate.Subtract(3, 2)
+	result := Substract(3, 2)
 	if result != 1 {
 		t.Errorf("Expected 1, got %v", result)
 	}
