@@ -175,7 +175,7 @@ Add /user/go/bin to the PATH environment variable. You can do this by adding thi
 export PATH=$PATH:/user/local/go/bin
 ```
 
-1. [Introduction](##Introductiones made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source \$HOME/.profile.
+1. Changes made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source \$HOME/.profile.
 
 ---
 
