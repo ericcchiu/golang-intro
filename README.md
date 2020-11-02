@@ -1501,8 +1501,8 @@ Follow the instructions in foundations-labs folder for Arrays and Slices.
 
 ### **Maps**
 
-Maps are similar to arrays and slices in that you have a collection of types. However, rather than accessing an element by an `index`, you access it by a `key` and the elements are unordered.
+Maps are similar to arrays and slices in that you have a collection of types. However, rather than accessing an element by an `index`, you access it by a `key` and the elements are unordered. Maps have fast read and write access compared to arrays and slices.
 
 **Syntax for creating a map**: `map[<key_type>]<value_type>`
 
-The **<key_type>** inside of the `[]` will determine the type of the key used to access value. The **<value_type>** following the `]` will determine the type of the value for that element.
+The **<key_type>** inside of the `[]` will determine the type of the key used to access value. The **<value_type>** following the `]` will determine the type of the value for that element. 
